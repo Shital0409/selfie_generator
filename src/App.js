@@ -1,4 +1,6 @@
 import logo from "./logo.svg";
+import img1 from "./img1.png";
+import img2 from "./img2.JPG";
 import "./App.css";
 
 function App() {
@@ -56,7 +58,34 @@ function App() {
       console.error("Background removal failed:", error);
     }
   }
+  let timer;
+  let turn = 0;
+  function turnOn() {
+    timer = setInterval(turnFan, 200);
+    let x = document.getElementById("on");
+    x.disabled = true;
+  }
 
+  // function turnOff() {
+  //   clearInterval(timer);
+  //   let x = document.getElementById("on");
+  //   x.disabled = false;
+  // }
+
+  function turnFan() {
+    let x = document.getElementById("img2");
+    turn += 60;
+    x.style.transform = "rotate(" + (turn % 360) + "deg)";
+  }
+
+  function zoomin() {
+    var myImg = document.getElementById("img2");
+    var currWidth = myImg.clientWidth;
+    if (currWidth === 2500) return false;
+    else {
+      myImg.style.width = currWidth + 100 + "px";
+    }
+  }
   // Usage example
   // const fileInput = document.getElementById("imageInput");
   // fileInput.addEventListener("change", (event) => {
@@ -81,6 +110,7 @@ function App() {
     //       </a>
     //     </header>
     //   </div>
+
     <div>
       <input type="file" id="imageInput" onChange={removeBackground} />
       <br />
@@ -90,6 +120,17 @@ function App() {
         Save
       </button> */}
       {/* <a id="link">Download</a> */}
+      <div className="img-div">
+        <img src={img1} id="img1" width="400" height="400" alt="img1" />
+        <img src={img2} id="img2" width="200" height="200" alt="img2" />
+      </div>
+      <button id="on" onClick={turnOn}>
+        Rotate
+      </button>
+      <button id="on" onClick={zoomin}>
+        Zoom
+      </button>
+      <br />
     </div>
   );
 }
