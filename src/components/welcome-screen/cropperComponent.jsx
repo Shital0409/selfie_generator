@@ -1,6 +1,6 @@
 import ImageComponent from "./imageComponent";
 import "./cropper.css";
-
+import site from "../../assets/images/profile.png";
 
 const CropperComponent = () => {
   return (
@@ -9,9 +9,9 @@ const CropperComponent = () => {
         <div className="p-3">
           <h4 className="site-heading fw-bold mb-3">PlayBill</h4>
         </div>
-        <div className="sg-content-body d-flex flex-1 w-100">
-          <div className="image-section d-flex flex-1 w-100 position-relative">
-            <ImageComponent/>
+        <div className="sg-content-body">
+          <div className="image-section">
+            <ImageComponent  imageSrc={site} text="helllo"/>
           </div>
         </div>
         <div className="p-4">
